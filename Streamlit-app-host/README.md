@@ -105,6 +105,7 @@ streamlit run app.py
 ```
 
 This will start the app on the EC2 instance. Navigate to the External URL given in the terminal and your app should be set up.
+http://18.170.120.22:8501
 
 ![app](Images/Streamlit-app.png) 
 
