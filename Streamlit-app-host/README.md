@@ -109,3 +109,8 @@ This will start the app on the EC2 instance. Navigate to the External URL given 
 ![app](Images/Streamlit-app.png) 
 
 ## Challenges
+
+Some Challenges included:
+
+1. Copying over the folder, I have to familiarize myself more with Linux commands. 
+2. Configuring the Inbound Rules, I assumed HTTP and HTTPS rules were enough, but I had to configure a custom rule for the port 8501
