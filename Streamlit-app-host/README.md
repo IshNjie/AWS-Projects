@@ -50,7 +50,11 @@ The folder I aim to copy over into our EC2 instance will contain the `app.py` fi
 sudo scp -i /path/to/.pem -r folder/ ec2-user@IP-Address:
 ```
 
+the `scp` command is used to copy files from local to a remote system.
+
 The `-i` is used identify the .pem file as a secure file, used for authentication
+
+The IP-Address used should be the public IP or DNS provided on the server details
 
 By default, the folder copied will be in the `home` directory if no directory is defined after the `:`
 
