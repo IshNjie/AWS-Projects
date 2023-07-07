@@ -119,3 +119,4 @@ Some Challenges included:
 
 1. Copying over the folder, I have to familiarize myself more with Linux commands. 
 2. Configuring the Inbound Rules, I assumed HTTP and HTTPS rules were enough, but I had to configure a custom rule for the port 8501
+3. I still need to configure the app to run continuously within the EC2 Instance
