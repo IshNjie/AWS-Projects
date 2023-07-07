@@ -8,6 +8,8 @@ AWS Lambda is a serverless compute service. This allows the user to run code wit
 
 In this project, we will configure a Lambda function to scrape a website with watch prices and load that into an S3 bucket.
 
+![ArchDiag](Images/ArchDiag.png)
+
 #
 
 ## Steps
