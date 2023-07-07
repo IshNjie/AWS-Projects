@@ -56,6 +56,59 @@ Also, do not forget to configure the Runtime to the language of your choice
 
 ![selectRole](Images/SelectRole.png)
 
-9. `Create Function` and visit the UI
+`Create Function` and visit the UI
 
 ![LambdaUI](Images/LambdaUI.png)
+
+9. Bring in Python dependencies 
+
+On my local machine, I created a virtual environment and only installed the packages I needed for this project
+
+```
+pip install beautifulsoup4
+pip install requests
+```
+
+Following that, I gathered the packages and compressed them into a zip file. Next, you could either, upload the zip file directly into the code editor area using the `Upload from` button, or first, upload the zip file to s3 then read from the URL (destination of the zip file in S3). I chose the latter.
+
+### Caution!
+
+Uploading large zip files will result in the code editor not being accessible to deploy and test. 
+
+10. Amend the code in the .py file, deploy and test.
+
+The test event is simple, navigate to test and `configure test event`
+
+![test](Images/testEvent.png)
+
+Give your test a name and hit `Save`
+
+Once you test your code, you should see a response like this:
+
+![executeRes](Images/execute.png)
+
+To verify this has worked, go and check your `S3 bucket`:
+
+![s3Bucket](Images/s3bucket.png)
+
+Here, the new .json file `Watches1.json` is now in my S3 bucket. This data shows the Brand, Name, Price and Reference Number of a watch on https://www.goldsmiths.co.uk/c/Watches/Mens-Watches
+
+## Challenges
+
+Some Challenges included:
+
+1. Testing did not immediately work for me. I had to deploy my function every time I wanted to test
+
+2. I had to learn how to bring in the Python dependencies via a zip file. Size was an issue so I had to be selective as to which packages I zipped up
+
+3. I had to change the time out configuration to increase the time to 10 minutes.
+
+4. I had to reinstall a version of urllib 
+
+https://stackoverflow.com/questions/76414514/cannot-import-name-default-ciphers-from-urllib3-util-ssl-on-aws-lambda-us
+
+```
+pip install --force-reinstall -v "urllib3==1.26.15"
+```
+
+
