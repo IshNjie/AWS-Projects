@@ -7,7 +7,7 @@ s3 = boto3.client('s3')
 
 def lambda_handler(event,context):
 
-    bucket = 'testishbucket'
+    bucket = 'watch-glue-input-bucket'
     
     url = 'https://www.goldsmiths.co.uk/c/Watches/Mens-Watches'
     
@@ -24,7 +24,7 @@ def lambda_handler(event,context):
         item = {}
         item['Brand'] = firstpage[i].find_all('div','productTileBrand')[0].text
         item['Name'] = firstpage[i].find_all('div','productTileName')[0].text
-        item['Price'] = firstpage[i].find_all('div','productTilePrice')[0].text.replace('£','')
+        item['Price'] = firstpage[i].find_all('div','productTilePrice')[0].text.replace('£','').strip().split('\n')[0]
         item['Ref.Number'] = firstpage[i].find_all('a')[0].get('href').split('-')[-1]
         
         data_list.append(item)
@@ -43,12 +43,14 @@ def lambda_handler(event,context):
             itemNext = {}
             itemNext['Brand'] = Nextpage[i].find_all('div','productTileBrand')[0].text
             itemNext['Name'] = Nextpage[i].find_all('div','productTileName')[0].text
-            itemNext['Price'] = Nextpage[i].find_all('div','productTilePrice')[0].text.replace('£','')
+            itemNext['Price'] = Nextpage[i].find_all('div','productTilePrice')[0].text.replace('£','').strip().split('\n')[0]
             itemNext['Ref.Number'] = Nextpage[i].find_all('a')[0].get('href').split('-')[-1]
     
             data_list.append(itemNext)
-            
-    uploadByte = bytes(json.dumps(data_list).encode('UTF-8'))
+    
+    #data_list = json.dumps(data_list, separators=(',', ':'))
+    data_list = ','.join(json.dumps(item) for item in data_list).encode('UTF-8') 
+    uploadByte = bytes(data_list)
     s3.put_object(Bucket = bucket,Key='Watches1.json',Body=uploadByte)
     
-    print('Put Complete')
+    print('Put Complete to S3')
