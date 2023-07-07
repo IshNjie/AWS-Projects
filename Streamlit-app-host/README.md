@@ -119,4 +119,13 @@ Some Challenges included:
 
 1. Copying over the folder, I have to familiarize myself more with Linux commands. 
 2. Configuring the Inbound Rules, I assumed HTTP and HTTPS rules were enough, but I had to configure a custom rule for the port 8501
-3. I still need to configure the app to run continuously within the EC2 Instance
+3. I still need to configure the app to run continuously within the EC2 Instance: https://www.youtube.com/watch?v=3sQhVKO5xAA
+
+```
+nohup streamlit run app.py
+```
+
+`ps ef` is used to find all the processes currently running on the instance. Locate the streamlit and identify the PID
+
+To Kill: `kill [PID]`
+
