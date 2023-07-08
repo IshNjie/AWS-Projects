@@ -17,4 +17,7 @@ Amazon Web Services (AWS) is a cloud computing platform offering multiple resour
     1. Serverless compute service
     2. Allowing to run code without managing servers 
     3. Provides precise software scaling
+5. AWS Glue
+    1. Serverless ETL Service
+    2. Schema inference as it understands the schema on the data in the data stores
 
