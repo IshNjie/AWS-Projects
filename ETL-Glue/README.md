@@ -6,7 +6,7 @@ It is also infers schema form semi-structured (JSON) and structured datasets via
 
 A crawler connects to a data store and determines the schema for the data. Following this, the meta data will be saved to a data catalog which will articulate the schema of the data. This can be used in Glue to transform the data and load to another data store.
 
-In this project, we will build upon the Watch Scrape project and transform the data in our S3 bucket and load to an output S3 bucket
+In this project, we will build upon the Watch Scrape project and transform the data in our S3 bucket and load to an output S3 bucket. Find the file here: [Lambda Function](../Watch-Scrape/lambda_function.py)
 
 #
 
